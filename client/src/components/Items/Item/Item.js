@@ -5,10 +5,8 @@ const Item = (props) => {
     const handleClick = async (e, id) => {
         const name =  e.target.name
         if (name === 'edit') {
-            console.log('EDIT', id);
             await axios.patch(`http://localhost:5000/items/${id}`)
         } else if (name === 'delete') {
-            console.log('DELETE', id);
             await axios.delete(`http://localhost:5000/items/${id}`)
         }
     }
