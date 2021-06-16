@@ -27,5 +27,14 @@ export const editItem = (req, res) => {
 }
 
 export const deleteItem = (req, res) => {
-    console.log('DELETE ITEM id:', req.params.id);
+    const id = req.params.id;
+    try {
+        Item.deleteOne({ _id: id }, (err) => {
+            if (!err) {
+                res.redirect('/items')
+            }
+        })
+    } catch (error) {
+        console.log(error)
+    }
 }
