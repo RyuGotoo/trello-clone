@@ -1,7 +1,6 @@
 import Item from '../models/items.js';
 
 export const getItems = async (req, res) => {
-    console.log('controllers/getItems');
     try {
         const items = await Item.find();
         res.status(200).json(items);

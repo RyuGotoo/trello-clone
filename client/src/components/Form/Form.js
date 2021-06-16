@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 
 const Form = () => {
-    const [item, setItem] = useState({ content:'', description:'' })
+    const [item, setItem] = useState({ content:'', detail:'' })
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -12,17 +13,18 @@ const Form = () => {
 
     const handleClick = (e) => {
         e.preventDefault();
-        console.log('button clicked');
-        // TODO: POST AN ITEM
-        setItem({ content:'', description:'' });
+        axios.post('http://localhost:5000/items', item)
+            .then(res => {
+                setItem({ content:'', detail:'' });
+            })
     }
 
     return(
         <div>
-            <h1>{ item.content } { item.description }</h1> 
+            <h1>{ item.content } { item.detail }</h1> 
             <form>
                 <input name="content" placeholder="content" onChange={ handleChange } value={ item.content } />
-                <input name="description" placeholder="description" onChange={ handleChange } value={ item.description } />
+                <input name="detail" placeholder="detail" onChange={ handleChange } value={ item.detail } />
                 <button onClick={ handleClick }>POST</button>
             </form>
         </div>
