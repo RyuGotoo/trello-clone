@@ -21,3 +21,11 @@ export const createItem = async (req, res) => {
         res.status(401).json({ message: error.message });
     };
 }
+
+export const editItem = (req, res) => {
+    console.log('EDIT ITEM id:', req.params.id);
+}
+
+export const deleteItem = (req, res) => {
+    console.log('DELETE ITEM id:', req.params.id);
+}
